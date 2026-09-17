@@ -17,5 +17,4 @@ A lightweight, object-oriented Command-Line Interface (CLI) application designed
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/](https://github.com/)<username-kamu>/expense-tracker.git
-   cd expense-tracker
+   git clone gh repo clone Alif-fiansyah/cli-expense-tracker
