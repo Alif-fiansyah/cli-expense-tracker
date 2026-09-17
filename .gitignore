@@ -1,0 +1,13 @@
+# File database lokal / privasi pengeluaran pribadi
+expenses.csv
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment & IDE
+.venv/
+env/
+.vscode/
+.idea/
