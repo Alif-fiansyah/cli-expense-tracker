@@ -6,10 +6,12 @@ A lightweight, object-oriented Command-Line Interface (CLI) application designed
 
 ## Features
 
-- **Quick Add**: Record transactions instantly directly from your terminal, including amount, category, and notes.
-- **Categorization**: Group expenses dynamically based on your needs (e.g., makanan, transport, kuliah, hiburan).
-- **Summary & Formatting**: View an auto-formatted ASCII table report complete with currency formatting and calculated totals.
-- **Zero External Dependencies**: Built entirely using the Python standard library (csv, argparse, datetime), meaning no pip install required.
+- **Quick Add:** Record transactions instantly directly from your terminal, including amount, category, and notes.
+- **Categorization:** Group expenses dynamically based on your needs (e.g., makanan, transport, kuliah, hiburan).
+- **Expense Breakdown (Summary):** Aggregate total spending per category with automatic percentage calculations.
+- **Record Management (Delete):** Remove specific entries effortlessly using unique transaction IDs.
+- **Indonesian Rupiah Formatting:** View reports with standard Indonesian currency separators (`Rp25.000`).
+- **Zero External Dependencies:** Built entirely using the Python standard library (`csv`, `argparse`, `datetime`), meaning no `pip install` required.
 
 ---
 
@@ -31,33 +33,61 @@ A lightweight, object-oriented Command-Line Interface (CLI) application designed
 ## Usage Examples
 
 ### Adding an Expense
-Syntax umum:
+General Syntax:
 ```bash
 python tracker.py add <amount> "<note>" -c <category>
 ```
 
-Contoh penambahan transaksi:
+Example:
 ```bash
 python tracker.py add 25000 "Makan siang ayam geprek" -c makanan
 python tracker.py add 15000 "Bensin motor" -c transport
+python tracker.py add 12000 "Fotokopi materi kuliah" -c kuliah
 ```
 
 ### Viewing All Expenses
-Untuk melihat seluruh riwayat transaksi dan total pengeluaran:
+To inspect full transaction history along with unique IDs and totals:
 ```bash
 python tracker.py list
 ```
 
-### Sample Output
-```text
-=================================================================
-Tanggal            | Kategori     | Nominal (Rp)    | Catatan
------------------------------------------------------------------
-2026-09-17 15:22   | Makanan      |       25,000    | Makan siang ayam geprek
-2026-09-17 15:22   | Transport    |       15,000    | Bensin motor
-=================================================================
-TOTAL PENGELUARAN: Rp40,000
+### Expense Summary & Statistics
+To view total spending grouped by category with percentages:
+```bash
+python tracker.py summary
 ```
+### Deleting a Transaction
+To remove an entry using its ID obtained from the list command:
+```bash
+python tracker.py delete <transaction_id>
+```
+
+### Sample Output
+
+#### List View (`python tracker.py list`)
+```text
+================================================================================
+ID           | Tanggal          | Kategori     |        Nominal | Catatan
+--------------------------------------------------------------------------------
+1726910400   | 2026-09-21 12:00 | Makanan      |       Rp25.000 | Makan siang ayam geprek
+1726910415   | 2026-09-21 12:05 | Transport    |       Rp15.000 | Bensin motor
+1726910430   | 2026-09-21 12:10 | Kuliah       |       Rp12.000 | Fotokopi materi kuliah
+================================================================================
+TOTAL PENGELUARAN: Rp52.000
+```
+
+### Category Summary  (`python tracker.py summary`)
+```text
+=============================================
+Kategori           |          Total | Persentase
+---------------------------------------------
+Makanan            |       Rp25.000 |   48.1%
+Transport          |       Rp15.000 |   28.8%
+Kuliah             |       Rp12.000 |   23.1%
+=============================================
+TOTAL: Rp52.000
+```
+
 
 ---
 
